@@ -17,9 +17,15 @@ class Attestation extends Component {
   render() {
     const { data } = this.props;
     return (
-      <section>
+      <section className="table_wrapper">
         <div className="d-flex justify-content-between align-items-center table__header">
-          <span className="table__title">Latest Slots</span>
+          <span className="table__title">
+            <span className="icon__wrapper">
+              {" "}
+              <i className="icon-hourglass"> </i>
+            </span>
+            Latest Slots
+          </span>
           <span>
             <Link href="attestations-details">
               <a
@@ -32,7 +38,7 @@ class Attestation extends Component {
             </Link>
           </span>
         </div>
-        <Table striped>
+        <Table striped responsive>
           <thead>
             <tr>
               <th>Epoch </th>
@@ -40,7 +46,7 @@ class Attestation extends Component {
                 <i className="icon-hourglass-end"></i>Slot
               </th>
               <th>
-                <i className="icon-user"></i> Proposer
+                <i className="icon-user"></i>Proposer
               </th>
               <th>Time</th>
               <th>Status</th>
@@ -82,9 +88,9 @@ class Attestation extends Component {
                         </a>
                       </Link>
                     </td>
-                    <td>{item && item.time ?
-                          moment(item.time).fromNow()
-                      : "---"}</td>
+                    <td>
+                      {item && item.time ? moment(item.time).fromNow() : "---"}
+                    </td>
                     <td>
                       <span
                         className={

@@ -23,9 +23,16 @@ class ValidatorTable extends Component {
       data.validatorList.length > 0 &&
       data.validatorList.slice(0, 10);
     return (
-      <section>
+      <section className="table_wrapper">
         <div className="d-flex justify-content-between align-items-center table__header">
-          <span className="table__title">Active Validators</span>
+          <span className="table__title">
+            {" "}
+            <span className="icon__wrapper">
+              {" "}
+              <i className="icon-validators"> </i>
+            </span>
+            Active Validators
+          </span>
           <span style={{ float: "right" }}>
             <Link href="all-validators">
               <a
@@ -38,10 +45,10 @@ class ValidatorTable extends Component {
             </Link>
           </span>
         </div>
-        <Table striped>
+        <Table striped responsive>
           <thead>
             <tr>
-            <th>Index</th>
+              <th>Index</th>
               {/* <th>
                 <i className="icon-key"></i>Public Key{" "}
               </th> */}
@@ -55,21 +62,25 @@ class ValidatorTable extends Component {
               validatorData.map((item, index) => {
                 return (
                   <tr key={index}>
-                         <td>
-                        <Link
-                          href={"/validator/[key]"}
-                          as={`/validator/${
-                            item.validator && item.validator.index && item.validator.index
-                          }`}
-                        >
-                          <a style={{ textDecoration: "none" }}>
-                            {text_truncate(
-                              item.validator && item.validator.index ? item.validator.index : "---",
-                              30
-                            )}
-                          </a>
-                        </Link>
-                      </td>
+                    <td>
+                      <Link
+                        href={"/validator/[key]"}
+                        as={`/validator/${
+                          item.validator &&
+                          item.validator.index &&
+                          item.validator.index
+                        }`}
+                      >
+                        <a style={{ textDecoration: "none" }}>
+                          {text_truncate(
+                            item.validator && item.validator.index
+                              ? item.validator.index
+                              : "---",
+                            30
+                          )}
+                        </a>
+                      </Link>
+                    </td>
                     {/* <OverlayTrigger
                       placement="top"
                       delay={{ show: 250, hide: 400 }}
@@ -97,8 +108,18 @@ class ValidatorTable extends Component {
                       </td>
                     </OverlayTrigger> */}
                     {/* <td>{text_truncate(item.validator ? item.validator.publicKey : '---', 30)}</td> */}
-                    <td>{item.validator && item.validator.balance ? Math.round(item.validator.balance*1000)/1000 + ' ETH' : '---'} </td>
-                    <td>{item.validator && item.validator.effectiveBalance && item.validator.effectiveBalance} ETH</td>
+                    <td>
+                      {item.validator && item.validator.balance
+                        ? Math.round(item.validator.balance * 1000) / 1000 +
+                          " ETH"
+                        : "---"}{" "}
+                    </td>
+                    <td>
+                      {item.validator &&
+                        item.validator.effectiveBalance &&
+                        item.validator.effectiveBalance}{" "}
+                      ETH
+                    </td>
                     <td>
                       {item.validator && item.validator.slashed
                         ? "True"

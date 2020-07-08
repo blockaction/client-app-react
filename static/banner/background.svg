@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1366" height="289" viewBox="0 0 1366 289">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.028" y1="0.099" x2="0.958" y2="0.9" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#37d4b1"/>
+      <stop offset="1" stop-color="#00a17e"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_71" data-name="Group 71" transform="translate(0 -95)">
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="1366" height="289" transform="translate(0 95)" fill="url(#linear-gradient)"/>
+    <circle id="Ellipse_36" data-name="Ellipse 36" cx="10" cy="10" r="10" transform="translate(38 136)" fill="#fff" opacity="0.07"/>
+    <circle id="Ellipse_37" data-name="Ellipse 37" cx="18" cy="18" r="18" transform="translate(48 199)" fill="#fff" opacity="0.07"/>
+    <circle id="Ellipse_40" data-name="Ellipse 40" cx="8" cy="8" r="8" transform="translate(123 150)" fill="#fff" opacity="0.07"/>
+    <circle id="Ellipse_38" data-name="Ellipse 38" cx="6" cy="6" r="6" transform="translate(191 144)" fill="#fff" opacity="0.07"/>
+    <circle id="Ellipse_39" data-name="Ellipse 39" cx="3" cy="3" r="3" transform="translate(87 124)" fill="#fff" opacity="0.07"/>
+    <g id="Group_7" data-name="Group 7" transform="translate(-191.877 -33.174)" opacity="0.79">
+      <path id="Path_42" data-name="Path 42" d="M130.266,0c71.944,0,130.266,47.324,130.266,105.7-.2.245-261.267-.357-260.531,0C0,47.324,58.322,0,130.266,0Z" transform="translate(585.593 311.135)" fill="#272727" opacity="0.03"/>
+      <path id="Path_41" data-name="Path 41" d="M220.789,0C342.728,0,441.578,80.21,441.578,179.155,442.794,178.966-.7,180,0,179.155,0,80.21,98.851,0,220.789,0Z" transform="translate(495.07 237.682)" fill="#272727" opacity="0.03"/>
+      <path id="Path_40" data-name="Path 40" d="M351.859,0C546.351,0,702.873,109.283,702.873,267.1c1.929.782-699.03.782-700,.782C2.877,110.065,157.368,0,351.859,0Z" transform="translate(364 149)" fill="#272727" opacity="0.03"/>
+    </g>
+  </g>
+</svg>

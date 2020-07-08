@@ -87,6 +87,9 @@ class Slot extends Component {
         websiteKeywords="Eth"
         metaDataFlag={true}
       >
+         <div className="background-circles">
+          <img src="../../static/background-circles.svg" />
+        </div>
         {/* <InnerPageBanner pageTitle="Slot" /> */}
         <Container>
           {data && !data.error_msg ? (
@@ -150,8 +153,10 @@ class Slot extends Component {
                         <Row>
                           <Col>
                             <div className="box">
+                              <div className="details">
                               {data && data.data[0] && data.data[0].status === 'proposed' ?
-                              <div className="box-body">
+                              <>
+                                <div className="grey-row">
                                 <div className="row mb-3">
                                   <div className="col-md-3">
                                     <p className="text-secondary mb-0">
@@ -265,7 +270,8 @@ class Slot extends Component {
                                       : "N/A"}
                                   </div>
                                 </div>
-                                <hr className="my-4>"></hr>
+                                </div>
+                                <div className="grey-row">
                                 <div className="row mb-3">
                                   <div className="col-md-3">
                                     <p className="text-secondary mb-0">
@@ -297,7 +303,8 @@ class Slot extends Component {
                                       : "N/A"}
                                   </div>
                                 </div>
-                                <hr className="my-4>"></hr>
+                                </div>
+                                <div className="grey-row">
                                 <div className="row mb-3">
                                   <div className="col-md-3">
                                     <p className="text-secondary mb-0">
@@ -312,7 +319,8 @@ class Slot extends Component {
                                       : "N/A"}
                                   </div>
                                 </div>
-                                <hr className="my-4>"></hr>
+                                </div>
+                                <div className="grey-row">
                                 <div className="row mb-3">
                                   <div className="col-md-3">
                                     <p className="text-secondary mb-0">
@@ -373,28 +381,30 @@ class Slot extends Component {
                                     </Row>
                                   </div>
                                 </div>
-                                <hr className="my-4>"></hr>
-                                <div className="row mb-3">
+                                </div>
+                                {/* <div className="row mb-3">
                                   <div className="col-md-3">
                                     <p className="text-secondary mb-0">
                                     Ethereum Block Hash  
                                     </p>
                                   </div>
                                   <div className="col-md-9 js-focus-state font-size-1 text-monospace">
-                                  <a 
-                                   href={`https://goerli.etherscan.io/block/${ data.data[0] && data.data[0].eth1_data &&
-                                       data.data[0].eth1_data.block_hash}`}
-                                   target="_blank"
-                                   >{data.data &&
-                                   
-                                   data.data[0] &&
-                                    data.data[0].eth1_data &&
-                                    data.data[0].eth1_data.block_hash
-                                      ? data.data[0].eth1_data.block_hash
-                                      : "N/A"}
+                                  <Link
+                                      href={"/block/[key]"}
+                                      as={`/block/${ data.data[0].eth1_data.block_hash}`}
+                                    >
+                                      <a>
+                                      {data.data &&
+                                        data.data[0] &&
+                                          data.data[0].eth1_data &&
+                                          data.data[0].eth1_data.block_hash
+                                            ? data.data[0].eth1_data.block_hash
+                                            : "N/A"}
                                       </a>
+                                    </Link>
                                   </div>
-                                </div>
+                                </div> */}
+                                <div className="grey-row">
                                 <div className="row mb-3">
                                   <div className="col-md-3">
                                     <p className="text-secondary mb-0">
@@ -426,7 +436,7 @@ class Slot extends Component {
                                   </div>
                                 </div>
                                 <div>
-                                  <hr className="my-4>"></hr>
+                                </div>
                                   <div className="row mb-3">
                                     <div className="col-md-3">
                                       <p className="text-secondary mb-0">
@@ -442,10 +452,12 @@ class Slot extends Component {
                                     </div>
                                   </div>
                                 </div>
-                              </div> 
+                              </> 
+                             
                               :
                               data && data.data[0] && data.data[0].status  === 'skipped' ?
-                              <div className="box-body">
+                              <>
+                               <div className="grey-row">
                               <div className="row mb-3">
                                 <div className="col-md-3">
                                   <p className="text-secondary mb-0">
@@ -544,10 +556,11 @@ class Slot extends Component {
                                     </span>
                                   </div>
                                 </div>
-                              </div> : null
+                                </div>
+                              </> : null
                               }
-
-                              
+                               </div>
+                                {/* details wrapper end */}
                             </div>
                           </Col>
                         </Row>
@@ -555,6 +568,9 @@ class Slot extends Component {
                     </Tab.Content>
                     <Tab.Content>
                       <Tab.Pane eventKey={2}>
+                      <div className="box">
+                      <div className="details">
+                                        
                         <Row>
                           <Col>
                             {attestationData &&
@@ -562,12 +578,12 @@ class Slot extends Component {
                               attestationData.attestian_detail.map(
                                 (item, index) => {
                                   return (
-                                    <div key={index} className="box">
-                                      <div className="box-body">
+                                    <div key={index} className="grey-row">
+                                      
                                         <div className="row mb-3">
                                           <div className="col-md-3">
-                                            <p className="text-secondary mb-0">
-                                              Attestation ({index + 1}){" "}
+                                            <p className=" mb-0">
+                                              <b>Attestation ({index + 1}){" "}</b>
                                             </p>
                                           </div>
                                         </div>
@@ -677,7 +693,6 @@ class Slot extends Component {
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
                                   );
                                 }
                               )
@@ -691,6 +706,8 @@ class Slot extends Component {
                             )}
                           </Col>
                         </Row>
+                        </div>
+                        </div>
                       </Tab.Pane>
                     </Tab.Content>
                   </Tab.Container>

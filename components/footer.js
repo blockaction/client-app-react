@@ -5,7 +5,18 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import bitsbeatLogo from "../static/logo-white.png";
 import logoImage from "../static/logo.svg";
-
+// import {
+//   TwitterTimelineEmbed,
+//   TwitterShareButton,
+//   TwitterFollowButton,
+//   TwitterHashtagButton,
+//   TwitterMentionButton,
+//   TwitterTweetEmbed,
+//   TwitterMomentShare,
+//   TwitterDMButton,
+//   TwitterVideoEmbed,
+//   TwitterOnAirButton,
+// } from "react-twitter-embed";
 class Footer extends React.Component {
   state = {
     name: "",
@@ -17,8 +28,8 @@ class Footer extends React.Component {
     responseMessage: null,
     responseStatus: null,
     loading: false,
-    domain: 'Witti',
-    anotherDomain:'Prysm'
+    domain: "Witti",
+    anotherDomain: "Altona",
   };
 
   componentDidMount() {
@@ -32,10 +43,10 @@ class Footer extends React.Component {
       pauseOnHover: true,
       draggable: false,
     });
-    if(window.location.href.includes('witti')) {
-      this.setState({domain:'Witti', anotherDomain:'Prysm'})
-    } else if(window.location.href.includes('prysm')) {
-      this.setState({domain:'Prysm', anotherDomain: 'Witti'})
+    if (window.location.href.includes("witti")) {
+      this.setState({ domain: "Witti", anotherDomain: "Altona" });
+    } else if (window.location.href.includes("altona")) {
+      this.setState({ domain: "Altona", anotherDomain: "Witti" });
     }
   }
 
@@ -91,16 +102,17 @@ class Footer extends React.Component {
   };
 
   render() {
-    const { domain, anotherDomain  } = this.state;
+    const { domain, anotherDomain } = this.state;
 
     return (
       <footer className="main-footer  ">
         <div className="container">
-          <div className="row">
-            <div className="col-md-8 text-center offset-md-2">
+          <div className="row d-flex align-items-center">
+            <div className="col-md-12 text-center">
               <img src={logoImage}></img>
               <p className="main-footer-text">
-                ETH 2.0 Beacon Chain {domain} {domain && domain === 'Witti' && 'Multiclient'} Testnet Explorer{" "}
+                ETH 2.0 Beacon Chain {domain}{" "}
+                {domain && domain === "Witti" && "Multiclient"} Testnet Explorer{" "}
               </p>
 
               <div>
@@ -145,9 +157,27 @@ class Footer extends React.Component {
                       <i className="icon-twitter"></i>
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="https://t.me/joinchat/IhkTwRjHwsaOq3aj1iBTig"
+                      target="_blank"
+                      className="tele"
+                      title="Telegram"
+                    >
+                      <i className="icon-telegram"></i>
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
+            {/* <div className="col-md-4">
+              <TwitterTimelineEmbed
+                sourceType="profile"
+                screenName="blockaction_io"
+                options={{ height: 200 }}
+              />
+              <TwitterFollowButton screenName={"blockaction_io"} />
+            </div> */}
           </div>
           <hr></hr>
           <div className="row pb-3">
@@ -159,7 +189,11 @@ class Footer extends React.Component {
             <div className="col-md-8 text-right">
               <small>
                 BlockAction | Developed by{" "}
-                <a href="https://www.bitsbeat.com/" target="_blank" className="bitsbeat-text">
+                <a
+                  href="https://www.bitsbeat.com/"
+                  target="_blank"
+                  className="bitsbeat-text"
+                >
                   Bitsbeat IT Solutions
                 </a>
               </small>

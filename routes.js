@@ -10,6 +10,7 @@ routes.add("all-validators", "/all-validators");
 routes.add("pending-validators", "/pending-validators/:key");
 // routes.add("epoch", "/epoch/:key");
 // routes.add("slot", "/slot/:key");
-routes.add("roi", "/reward");
-routes.add("faqs", "/faqs");
+routes.add("reward", "/reward");
+routes.add("under-maintenance", "/reward");
+routes.add("resources", "/resources");
 

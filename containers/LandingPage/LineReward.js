@@ -100,7 +100,7 @@ class Chart extends Component {
       ],
     };
     return (
-      <div className="chart-container line-chart card mb-3">
+      <div className="chart-container line-chart card ">
         <Line
           id="lineChart"
           style={{ width: "100%" }}
@@ -189,7 +189,7 @@ class Chart extends Component {
                   },
                   ticks: {
                     autoSkip: true,
-                    maxTicksLimit: 12,
+                    maxTicksLimit: 4,
                     callback: function (label) {
                       if (/\s/.test(label)) {
                         return (

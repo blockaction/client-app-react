@@ -8,121 +8,129 @@ class BasicInfo extends Component {
   render() {
     const { data, validatorsData, queueData } = this.props;
     return (
-      <section className="basic-info pb-0">
-        {data && (
-          <div className="card">
-            <Row>
-              <Col lg={4} md={6}>
-                <div className="card__row d-flex ">
-                  <div className="card__column">
-                    <p className="card__title">Current Epoch</p>
-                    <p className="card__stats">
-                      <Link href={`epoch/${data.currentEpoch}`}>
-                        <a>{data.currentEpoch}</a>
-                      </Link>
-                    </p>
-                  </div>
-                  <div className="card__column text-right">
-                    <p className="card__title">Finalized Epoch</p>{" "}
-                    <p className="card__stats">
-                      <Link href={`epoch/${data.finalizedEpoch}`}>
-                        <a>{data.finalizedEpoch}</a>
-                      </Link>
-                    </p>
-                  </div>
-
-                  {/* <div className="card__body">
-                    {data.peers_defination || ""}
-                  </div> */}
-                </div>
-                <hr className="hr-line lg-none"></hr>
-                <div className="card__row d-flex ">
-                  <div className="card__column">
-                    <p className="card__title">Current Slot</p>
-                    <p className="card__stats">
-                      <Link href={`slot/${data.currentSlot}`}>
-                        <a>{data.currentSlot}</a>
-                      </Link>
-                    </p>
-                  </div>
-
-                  <div className="card__column text-right">
-                    <p className=" card__title">Finalized Slot</p>
-                    <p className="card__stats">
-                      <Link href={`slot/${data.finalizedSlot}`}>
-                        <a>{data.finalizedSlot}</a>
-                      </Link>
-                    </p>
-                  </div>
-                </div>
-              </Col>
-              <hr className="hr-line lg-none"></hr>
-              {/* end of col 1 */}
-
-              <Col lg={4} md={6}>
-                <div className="card__row d-flex ">
-                  <div className="card__column">
-                    <p className="card__title">Active Validators</p>
-                    <p className="card__stats">
-                      {validatorsData && validatorsData.totalSize
-                        ? addComma(validatorsData.totalSize)
-                        : "N/A"}
-                    </p>
-                  </div>
-
-                  <div className="card__column text-right">
-                    <p className=" card__title">Pending</p>
-                    <p className="card__stats">
-                      {queueData && queueData.count
-                        ? addComma(queueData.count)
-                        : "0"}
-                    </p>
-                  </div>
-                  {/* <div className="card__body">
-                      {data.slot_defination || ""}
-                    </div> */}
-                </div>
-                <hr className="hr-line "></hr>
-
-                <div className="card__row d-flex ">
-                  <div className="card__column">
-                    <p className="card__title">Voted Ether</p>
-                    <p className="card__stats">{addComma(data.voted_ether)}</p>
-                  </div>
-                  <div className="card__column text-right">
-                    <p className="card__title">Eligible Ether</p>
-                    <p className="card__stats">
-                      {addComma(data.eligible_ether)}
-                    </p>
-                  </div>
-                </div>
-              </Col>
-              {/* endof col 2 */}
-              <Col lg={4} md={6}>
-                <div className="card__row d-flex ">
-                  <div className="card__column">
-                    <p className="card__title">Peers</p>
-                    <p className="card__stats">
-                      {addComma(data.peers_count)}
-                      {/* <Link href="/peers">
-                        <a>{addComma(data.peers_count)}</a>
-                      </Link> */}
-                    </p>
-                  </div>
-                  <div className="card__column text-right">
-                    <p className="card__title">Price</p>
-                    <p className="card__stats">
-                      ${addComma(Math.round(data.price * 100) / 100)}
-                    </p>
-                  </div>
-                </div>
-                <hr></hr>
-              </Col>
-            </Row>
+      <>
+      <section className="stats__section">
+        {data &&
+        <div className="stats__row">
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-epoch"></i>
+            </div>
+            <div className="stats__desc">
+            <Link
+                href={"/epoch/[key]"}
+                as={`/epoch/${data.currentEpoch}`}
+              >
+                <a className="stats__value">{data.currentEpoch ? data.currentEpoch : '---'}</a>
+              </Link>
+              <p className="stats__title">current epoch</p>
+            </div>
           </div>
-        )}
-        <br />
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-epoch"></i>
+            </div>
+            <div className="stats__desc">
+            <Link
+                href={"/epoch/[key]"}
+                as={`/epoch/${data.finalizedEpoch}`}
+              >
+                <a className="stats__value">{data.finalizedEpoch ? data.finalizedEpoch : '---'}</a>
+              </Link>
+              <p className="stats__title">finalised epoch</p>
+            </div>
+          </div>
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-validators"></i>
+            </div>
+            <div className="stats__desc">
+             <span className="stats__value"> {data.activeValidators
+                        ? addComma(data.activeValidators)
+                        : "---"}</span>
+              <p className="stats__title">Active validators</p>
+            </div>
+          </div>
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-validators-pending"></i>
+            </div>
+            <div className="stats__desc">
+              <span className="stats__value"> {data.pendingValidators
+                        ? addComma(data.pendingValidators)
+                        : "---"}</span>
+              <p className="stats__title">Pending validators</p>
+            </div>
+          </div>
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-peer"></i>
+            </div>
+            <div className="stats__desc">
+               <span className="stats__value">{data.peersCount ? addComma(data.peersCount) : '---'}</span>
+              <p className="stats__title">Peers</p>
+            </div>
+          </div>
+
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-money"></i>
+            </div>
+            <div className="stats__desc">
+               <span className="stats__value">{data.price ? '$' + addComma(Math.round(data.price * 100) / 100) : '---'}</span>
+              <p className="stats__title">Price</p>
+            </div>
+          </div>
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-hourglass"></i>
+            </div>
+            <div className="stats__desc">
+            <Link
+                href={"/slot/[key]"}
+                as={`/slot/${data.currentSlot}`}
+              >
+                <a className="stats__value">{data.currentSlot ? data.currentSlot : '---'}</a>
+              </Link>
+              <p className="stats__title">Current slot</p>
+            </div>
+          </div>
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-hourglass-1"></i>
+            </div>
+            <div className="stats__desc">
+            <Link
+                href={"/slot/[key]"}
+                as={`/slot/${data.finalizedSlot}`}
+              >
+                <a className="stats__value">{data.finalizedSlot ? data.finalizedSlot : '---'}</a>
+              </Link>
+              <p className="stats__title">Finalised slot</p>
+            </div>
+          </div>
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-epoch"></i>
+            </div>
+            <div className="stats__desc">
+               <span className="stats__value">{data.votedEther ? addComma(Math.round(data.votedEther)): '---'}</span>
+              <p className="stats__title">Voted ether</p>
+            </div>
+          </div>
+          <div className="stats__card">
+            <div className="stats__icons">
+              <i className="icon-epoch"></i>
+            </div>
+            <div className="stats__desc">
+              <span className="stats__value">{data.eligibleEther ? addComma(Math.round(data.eligibleEther)) : '---'}</span>
+              <p className="stats__title">Eligible ether</p>
+            </div>
+          </div>
+        </div>
+        }
       </section>
+      </>
     );
   }
 }

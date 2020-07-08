@@ -1,6 +1,9 @@
+import React, { Component } from "react";
 import Head from "next/head";
 import NavigationBar from "./navbar";
+import UnderMaintenance from "./Common/UnderMaintenance";
 import Footer from "./footer";
+import * as action from "utils/apiAdmin";
 
 import {
   websiteTitle,
@@ -9,80 +12,99 @@ import {
   websiteImage,
 } from "utils/constants";
 
-import * as action from "utils/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/style.scss";
 import "../styles/fonts/style.css";
 
-const Layout = (props) => {
+class Layout extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+       orgData: []
+    }
+  }
+
+  componentDidMount() {
+   action
+    .getData("organisation-info/client")
+    .then(
+      res => {
+        this.setState({orgData: res && res.data && res.data.dataList && res.data.dataList[0]})
+      } 
+    );
+  }
+  
+  render(){
+    const { orgData } = this.state;
   return (
     <>
       <Head>
-        <title>{props.websiteTitle ? props.websiteTitle : websiteTitle}</title>
+        <title>{this.props.websiteTitle ? this.props.websiteTitle : websiteTitle}</title>
         <meta
           name="author"
-          content={props.articleAuthor ? props.articleAuthor : "ETH"}
+          content={this.props.articleAuthor ? this.props.articleAuthor : "ETH"}
         />
         <meta
           name="description"
           content={
-            props.websiteDescription
-              ? props.websiteDescription
+            this.props.websiteDescription
+              ? this.props.websiteDescription
               : websiteDescription
           }
         />
         <meta
           name="keywords"
           content={
-            props.websiteKeywords ? props.websiteKeywords : websiteKeywords
+            this.props.websiteKeywords ? this.props.websiteKeywords : websiteKeywords
           }
         ></meta>
         <meta
           name="image"
-          content={props.websiteImage ? `${props.websiteImage}` : websiteImage}
+          content={this.props.websiteImage ? `${this.props.websiteImage}` : websiteImage}
         />
 
         {/* OG:Type */}
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
-          content={props.websiteTitle ? props.websiteTitle : websiteTitle}
+          content={this.props.websiteTitle ? this.props.websiteTitle : websiteTitle}
         />
         <meta
           property="og:description"
           content={
-            props.websiteDescription
-              ? props.websiteDescription
+            this.props.websiteDescription
+              ? this.props.websiteDescription
               : websiteDescription
           }
         />
         <meta
           property="og:image"
-          content={props.websiteImage ? `${props.websiteImage}` : websiteImage}
+          content={this.props.websiteImage ? `${this.props.websiteImage}` : websiteImage}
         />
 
         {/* Item Prop */}
         <meta
           itemProp="author"
-          content={props.articleAuthor ? props.articleAuthor : "ETH"}
+          content={this.props.articleAuthor ? this.props.articleAuthor : "ETH"}
         />
         <meta
           itemProp="description"
           content={
-            props.websiteDescription
-              ? props.websiteDescription
+            this.props.websiteDescription
+              ? this.props.websiteDescription
               : websiteDescription
           }
         />
         <meta
           itemProp="keywords"
           content={
-            props.websiteKeywords ? props.websiteKeywords : websiteKeywords
+            this.props.websiteKeywords ? this.props.websiteKeywords : websiteKeywords
           }
         ></meta>
         <meta
           itemProp="image"
-          content={props.websiteImage ? props.websiteImage : websiteImage}
+          content={this.props.websiteImage ? this.props.websiteImage : websiteImage}
         />
 
         <meta
@@ -109,14 +131,26 @@ const Layout = (props) => {
         </script>
         {/* <script
           type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(props.schemaData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(this.props.schemaData) }}
         /> */}
       </Head>
-      {!props.metaDataFlag && <NavigationBar {...props} />}
-      <div className="wrapper">{props.children}</div>
-      {!props.metaDataFlag && <Footer {...props} />}
-    </>
+      { orgData && orgData.active === false && <UnderMaintenance />}
+      {orgData && orgData.active === true && !this.props.metaDataFlag && <NavigationBar {...this.props} />}
+       {orgData && orgData.active === true && 
+       <div className="wrapper">
+          {this.props.children}
+        </div> 
+       }
+      {orgData && orgData.active === true && !this.props.metaDataFlag && <Footer {...this.props} /> }
+     {/* { orgData && orgData.active === false && <UnderMaintenance />}
+      {!this.props.metaDataFlag && <NavigationBar {...this.props} />}
+       <div className="wrapper">
+          {this.props.children}
+        </div> 
+      {!this.props.metaDataFlag && <Footer {...this.props} /> }  */}
+   </>
   );
+}
 };
 
 export default Layout;

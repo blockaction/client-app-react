@@ -72,6 +72,9 @@ class Epoch extends Component {
         websiteKeywords="Eth"
         metaDataFlag={true}
       >
+        <div className="background-circles">
+          <img src="../../static/background-circles.svg" />
+        </div>
         <Container>
           {data && !data.error_msg ? (
             <section>
@@ -124,16 +127,17 @@ class Epoch extends Component {
                         <Row>
                           <Col>
                             <div className="box">
-                              <div className="box-body">
-                                <div className="row mb-3">
-                                  <div className="col-md-3">
-                                    <p className="text-secondary mb-0">
-                                      Epoch
-                                    </p>
-                                  </div>
-                                  <div className="col-md-9 js-focus-state font-size-1 font-weight-bold">
-                                    {data.epoch ? data.epoch : "N/A"}
-                                    {/* <Link href={`/epoch/${parseInt(query.key)-1}`}>
+                              <div className="details">
+                                <div className="grey-row">
+                                  <div className="row mb-3">
+                                    <div className="col-md-3">
+                                      <p className="text-secondary mb-0">
+                                        Epoch
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1 font-weight-bold">
+                                      {data.epoch ? data.epoch : "N/A"}
+                                      {/* <Link href={`/epoch/${parseInt(query.key)-1}`}>
                                                             <a style={{textDecoration:'none'}}>
                                                             <button 
                                                                className="btn previous-btn" 
@@ -153,141 +157,175 @@ class Epoch extends Component {
                                                         </button>
                                                         </a>
                                                         </Link> */}
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Finalized
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      <span
+                                        className={
+                                          data.finalized
+                                            ? "badge bg-success"
+                                            : "badge badge-secondary"
+                                        }
+                                      >
+                                        {data.finalized ? "True" : "False"}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <div className="col-md-3">
+                                      <p className="text-secondary mb-0">
+                                        Time
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      <i className="icon-clock-o mr-1" />
+                                      {data && data.time
+                                        ? moment(data.time).format(
+                                            "MMM-DD-YYYY HH:mm:ss"
+                                          ) +
+                                          " (" +
+                                          moment(data.time).fromNow() +
+                                          ")"
+                                        : "N/A"}
+                                    </div>
+                                  </div>
+                                  <div className="row ">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Attestations
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      {data.attestations != null
+                                        ? data.attestations
+                                        : "N/A"}
+                                    </div>
                                   </div>
                                 </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-3">
-                                    <p className=" text-secondary mb-0">
-                                      Finalized
-                                    </p>
+
+                                <div className="grey-row">
+                                  <div className="row mb-3">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Deposits
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      {data.deposits !== null
+                                        ? data.deposits
+                                        : "N/A"}
+                                    </div>
                                   </div>
-                                  <div className="col-md-9 js-focus-state font-size-1">
-                                   <span className={data.finalized ? "color-green" : "color-grey"}>{data.finalized ? 'True' : 'False'}</span>  
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-3">
-                                    <p className="text-secondary mb-0">Time</p>
-                                  </div>
-                                  <div className="col-md-9 js-focus-state font-size-1">
-                                    <i className="icon-clock-o mr-1" />
-                                    {data &&
-                                    data.time
-                                      ? moment(data.time).format("MMM-DD-YYYY HH:mm:ss") + ' (' + moment(data.time).fromNow()+')'
-                                      : "N/A"}
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-3">
-                                    <p className=" text-secondary mb-0">
-                                      Attestations
-                                    </p>
-                                  </div>
-                                  <div className="col-md-9 js-focus-state font-size-1">
-                                    {data.attestations !=null ? data.attestations : "N/A"}
-                                  </div>
-                                </div>
-                                <hr className="my-4>"></hr>
-                                <div className="row mb-3">
-                                  <div className="col-md-3">
-                                    <p className=" text-secondary mb-0">
-                                      Deposits
-                                    </p>
-                                  </div>
-                                  <div className="col-md-9 js-focus-state font-size-1">
-                                    {data.deposits !== null
-                                      ? data.deposits
-                                      : "N/A"}
-                                  </div>
-                                </div>
-                                {data.slashing &&
-                                <div className="row mb-3">
-                                  <div className="col-md-3">
-                                    <p className=" text-secondary mb-0">
-                                      Slashing P/A
-                                    </p>
-                                  </div>
-                                   <div className="col-md-9 js-focus-state font-size-1">
-                                    {data.slashing.attester_slashing !== null ? 
-                                      data.slashing.attester_slashing : '--'}  / {data.slashing.proposer_slashing !== null ? 
-                                         data.slashing.proposer_slashing : '--'}
-                                  </div>
-                                  </div>
-                                  }
-                                      <div className="row mb-3">
-                                  <div className="col-md-3">
-                                    <p className=" text-secondary mb-0">
-                                      Total Validators Count
-                                    </p>
-                                  </div>
-                                  <div className="col-md-9 js-focus-state font-size-1">
-                                    {data.validator_count !== null
-                                      ? data.validator_count
-                                      : "N/A"}
+                                  {data.slashing && (
+                                    <div className="row mb-3">
+                                      <div className="col-md-3">
+                                        <p className=" text-secondary mb-0">
+                                          Slashing P/A
+                                        </p>
+                                      </div>
+                                      <div className="col-md-9 js-focus-state font-size-1">
+                                        {data.slashing.attester_slashing !==
+                                        null
+                                          ? data.slashing.attester_slashing
+                                          : "--"}{" "}
+                                        /{" "}
+                                        {data.slashing.proposer_slashing !==
+                                        null
+                                          ? data.slashing.proposer_slashing
+                                          : "--"}
+                                      </div>
+                                    </div>
+                                  )}
+                                  <div className="row ">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Total Validators Count
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      {data.validator_count !== null
+                                        ? data.validator_count
+                                        : "N/A"}
+                                    </div>
                                   </div>
                                 </div>
-                                <hr className="my-4>"></hr>
-                                <div className="row mb-3">
-                                <div className="col-md-3">
-                                  <p className=" text-secondary mb-0">
-                                    Proposed Blocks
-                                  </p>
+
+                                <div className="grey-row">
+                                  <div className="row mb-3">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Proposed Blocks
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      {data.blocks &&
+                                      data.blocks.proposed !== null
+                                        ? data.blocks.proposed
+                                        : "N/A"}
+                                    </div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Skipped Blocks
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      {data.blocks && data.blocks.skipped
+                                        ? data.blocks.skipped
+                                        : "N/A"}
+                                    </div>
+                                  </div>
                                 </div>
-                                <div className="col-md-9 js-focus-state font-size-1">
-                                  {data.blocks && data.blocks.proposed !==null
-                                    ? data.blocks.proposed
-                                    : "N/A"}
+
+                                <div className="grey-row">
+                                  <div className="row mb-3">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Voluntary Exists
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      {data.voluntay_exists !== null
+                                        ? data.voluntay_exists
+                                        : "N/A"}
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Voted Ether
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      {data.voted_ether !== null
+                                        ? data.voted_ether + " ETH"
+                                        : "N/A"}
+                                    </div>
+                                  </div>
+                                  <div className="row ">
+                                    <div className="col-md-3">
+                                      <p className=" text-secondary mb-0">
+                                        Participation Rate
+                                      </p>
+                                    </div>
+                                    <div className="col-md-9 js-focus-state font-size-1">
+                                      {data.participation_rate !== null
+                                        ? Math.round(
+                                            data.participation_rate * 100
+                                          ) /
+                                            100 +
+                                          "%"
+                                        : "N/A"}
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="row mb-3">
-                                <div className="col-md-3">
-                                  <p className=" text-secondary mb-0">
-                                    Skipped Blocks
-                                  </p>
-                                </div>
-                                <div className="col-md-9 js-focus-state font-size-1">
-                                  {data.blocks && data.blocks.skipped
-                                    ? data.blocks.skipped
-                                    : "N/A"}
-                                </div>
-                              </div>
-                              <hr className="my-4>"></hr>
-                                <div className="row mb-3">
-                                <div className="col-md-3">
-                                  <p className=" text-secondary mb-0">
-                                    Voluntary Exists
-                                  </p>
-                                </div>
-                                <div className="col-md-9 js-focus-state font-size-1">
-                                  {data.voluntay_exists !== null
-                                    ? data.voluntay_exists
-                                    : "N/A"}
-                                </div>
-                              </div>
-                              <div className="row mb-3">
-                                <div className="col-md-3">
-                                  <p className=" text-secondary mb-0">
-                                    Voted Ether
-                                  </p>
-                                </div>
-                                <div className="col-md-9 js-focus-state font-size-1">
-                                  {data.voted_ether !== null
-                                    ? data.voted_ether + ' ETH'
-                                    : "N/A"}
-                                </div>
-                              </div>
-                              <div className="row mb-3">
-                                <div className="col-md-3">
-                                  <p className=" text-secondary mb-0">
-                                    Participation Rate
-                                  </p>
-                                </div>
-                                <div className="col-md-9 js-focus-state font-size-1">
-                                  {data.participation_rate !== null
-                                    ? Math.round(data.participation_rate * 100) /100 + '%'
-                                    : "N/A"}
-                                </div>
-                              </div>
                               </div>
                             </div>
                           </Col>
@@ -300,18 +338,18 @@ class Epoch extends Component {
             </section>
           ) : (
             <div className="no-data-container container">
-            <div className="row">
-              <div className="col-md-8 offset-md-2 ">
-                <div className="error-message">
-                  <h1>Oops!! Data not found</h1>
-                  <h5>
-                    The data you're looking for isn't available yet. Please try
-                    again later.
-                  </h5>
+              <div className="row">
+                <div className="col-md-8 offset-md-2 ">
+                  <div className="error-message">
+                    <h1>Oops!! Data not found</h1>
+                    <h5>
+                      The data you're looking for isn't available yet. Please
+                      try again later.
+                    </h5>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           )}
         </Container>
       </Layout>

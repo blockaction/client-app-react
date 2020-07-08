@@ -3,17 +3,7 @@ import { withRouter } from "next/router";
 import { Bar, Line, Pie } from "react-chartjs-2";
 import moment from "moment";
 
-let color = [
-  "#14ba67",
-  "#d43e0d",
-  "#0c1485",
-  "#8c4d15",
-  "#8bc34a",
-  "#607d8b",
-  "#009688",
-];
-
-class Chart extends Component {
+class ValidatorChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,10 +13,6 @@ class Chart extends Component {
       },
     };
   }
-
-  // isMobileDevice = () => {
-  //     return ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-  // }
 
   setGradientColor = (canvas, color) => {
     const ctx = canvas.getContext("2d");
@@ -39,14 +25,13 @@ class Chart extends Component {
 
   getChartData = (canvas) => {
     const { participationData } = this.props;
-    // let colors = ["rgba(53,87,210,0.5)", "rgba(1,162,127,0.5)"];
     let colors = ["rgb(0,194,152)", "rgba(53,87,210)"];
     let data = {
       labels: participationData.timestamp,
       datasets: [
         {
-          label: "Validator Participation Rate",
-          yAxisID: "global_participation",
+          label: "Active Validators",
+          yAxisID: "active_validators",
 
           fill: true,
           // backgroundColor: 'rgba(255, 0, 255, 0.75)',
@@ -65,11 +50,11 @@ class Chart extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: participationData.global_participation,
+          data: participationData.active_validators_count,
         },
         {
-          label: "Voted Ether (ETH)",
-          yAxisID: "voted_ether",
+          label: "Eligible Ether (ETH)",
+          yAxisID: "eligible_ether",
           fill: true,
           // backgroundColor: 'rgba(0, 255, 0, 0.75)',
           // borderColor: color[2],
@@ -87,7 +72,7 @@ class Chart extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: participationData.voted_ether,
+          data: participationData.eligible_ether,
         },
       ],
     };
@@ -108,57 +93,6 @@ class Chart extends Component {
   render() {
     const { participationData } = this.props;
     const { chartData } = this.state;
-    //   let chartData = {
-    //     labels: participationData.timestamp,
-    //     datasets: [
-    //       {
-    //         label: 'Validator Participation Rate',
-    //         yAxisID: 'global_participation',
-
-    //          fill: true,
-    //         backgroundColor: 'rgba(255, 0, 255, 0.75)',
-    //         borderColor: color[1],
-    //         pointBackgroundColor: color[1],
-    //         pointBorderColor: color[1],
-    //         pointHoverBackgroundColor: color[1],
-    //         pointHoverBorderColor: color[1],
-
-    //         borderCapStyle: 'butt',
-    //         borderDash: [],
-    //         borderDashOffset: 0.0,
-    //         borderJoinStyle: 'miter',
-    //         pointBorderWidth: 1,
-    //         pointHoverRadius: 5,
-    //         pointHoverBorderWidth: 2,
-    //         pointRadius: 1,
-    //         pointHitRadius: 10,
-    //         data: participationData.global_participation
-    //       },
-    //       {
-
-    //         label: 'Voted Ether (ETH)',
-    //         yAxisID: 'voted_ether',
-    //         fill: true,
-    //         backgroundColor: 'rgba(0, 255, 0, 0.75)',
-    //         borderColor: color[2],
-    //         pointBackgroundColor: color[2],
-    //         pointBorderColor: color[2],
-    //         pointHoverBackgroundColor: color[2],
-    //         pointHoverBorderColor: color[2],
-
-    //         borderCapStyle: 'butt',
-    //         borderDash: [],
-    //         borderDashOffset: 0.0,
-    //         borderJoinStyle: 'miter',
-    //         pointBorderWidth: 1,
-    //         pointHoverRadius: 5,
-    //         pointHoverBorderWidth: 2,
-    //         pointRadius: 1,
-    //         pointHitRadius: 10,
-    //         data: participationData.voted_ether
-    //       },
-    //     ]
-    // }
 
     return (
       <div className="chart-container line-chart card">
@@ -207,7 +141,7 @@ class Chart extends Component {
             maintainAspectRatio: false,
             title: {
               display: true,
-              text: "Network Participation Chart",
+              text: "Validator Participation Chart",
             },
             legend: {
               display: true,
@@ -262,19 +196,19 @@ class Chart extends Component {
                   gridLines: {
                     drawOnChartArea: false,
                   },
-                  id: "global_participation",
+                  id: "active_validators",
                   type: "linear",
                   position: "left",
                   scaleLabel: {
                     display: true,
-                    labelString: "Validator Participation Rate",
+                    labelString: "Active Validators",
                   },
                 },
                 {
                   gridLines: {
                     drawOnChartArea: false,
                   },
-                  id: "voted_ether",
+                  id: "eligible_ether",
                   type: "linear",
                   position: "right",
                   ticks: {
@@ -285,7 +219,7 @@ class Chart extends Component {
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: "Voted Ether (ETH)",
+                    labelString: "Eligible Ether (ETH)",
                   },
                 },
               ],
@@ -323,4 +257,4 @@ class Chart extends Component {
   }
 }
 
-export default withRouter(Chart);
+export default withRouter(ValidatorChart);
