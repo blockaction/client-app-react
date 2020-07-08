@@ -98,6 +98,9 @@ class NavigationBar extends React.Component {
                 <Link href="/resources" passHref>
                   <Nav.Link>Resources</Nav.Link>
                 </Link>
+                <Link href="/all-validators" passHref>
+                  <Nav.Link>Validators</Nav.Link>
+                </Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

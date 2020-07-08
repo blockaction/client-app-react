@@ -18,6 +18,7 @@ import ReactPaginate from "react-paginate";
 import { main } from "@popperjs/core";
 import Link from "next/link";
 import InnerPageBanner from "components/Common/InnerPageBanner/";
+import moment from 'moment'
 
 class Validator extends Component {
   constructor(props) {
@@ -232,6 +233,7 @@ class Validator extends Component {
                                     </div>
                                   </div>
                                   <hr className="my-4>"></hr>
+                                  {data && data.eligibilityEpoch &&
                                   <div className="row mb-3">
                                     <div className="col-md-3">
                                       <p className="text-secondary mb-0">
@@ -253,10 +255,15 @@ class Validator extends Component {
                                               : "---"}
                                           </a>
                                         </Link>
+                                        {data && data.eligibility_epoch_time && 
+                                              data.eligibility_epoch_time !== "N/A" 
+                                              && " ("+ moment(data.eligibility_epoch_time).fromNow() +")" }
                                       </i>
                                     </div>
                                   </div>
+                                  }
                                 </div>
+                                {data && data.activationEpoch &&
                                 <div className="row mb-3">
                                   <div className="col-md-3">
                                     <p className="text-secondary mb-0">
@@ -276,9 +283,68 @@ class Validator extends Component {
                                           {data ? data.activationEpoch : "---"}
                                         </a>
                                       </Link>
+                                      {data && data.activation_epoch_time && 
+                                              data.activation_epoch_time !== "N/A" 
+                                              && " ("+ moment(data.activation_epoch_time).fromNow() +")" }
                                     </i>
                                   </div>
                                 </div>
+                                }
+                                <hr className="my-4>"></hr>
+                                {data && data.exitEpoch &&
+                                <div className="row mb-3">
+                                  <div className="col-md-3">
+                                    <p className="text-secondary mb-0">
+                                      Exit On{" "}
+                                    </p>
+                                  </div>
+                                  <div className="col-md-9 font-size-1">
+                                    <i>
+                                      epoch{" "}
+                                      <Link
+                                        href={"/epoch/[key]"}
+                                        as={`/epoch/${
+                                          data && data.exitEpoch
+                                        }`}
+                                      >
+                                        <a style={{ textDecoration: "none" }}>
+                                          {data ? data.exitEpoch : "---"}
+                                        </a>
+                                      </Link>
+                                      {data && data.exitEpoch_time && 
+                                              data.exitEpoch_time !== "N/A" 
+                                              && " ("+ moment(data.exitEpoch_time).fromNow() +")" }
+                                    </i>
+                                  </div>
+                                </div>
+                                }
+                                {data && data.exitEpoch &&
+                                <div className="row mb-3">
+                                  <div className="col-md-3">
+                                    <p className="text-secondary mb-0">
+                                    Withdrawable On{" "}
+                                    </p>
+                                  </div>
+                                  <div className="col-md-9 font-size-1">
+                                    <i>
+                                      epoch{" "}
+                                      <Link
+                                        href={"/epoch/[key]"}
+                                        as={`/epoch/${
+                                          data && data.withdrawableEpoch
+                                        }`}
+                                      >
+                                        <a style={{ textDecoration: "none" }}>
+                                          {data ? data.withdrawableEpoch : "---"}
+                                        </a>
+                                      </Link>
+                                      {data && data.withdrawableEpoch_time && 
+                                              data.withdrawableEpoch_time !== "N/A" 
+                                              && " ("+ moment(data.withdrawableEpoch_time).fromNow() +")" }
+                                    </i>
+                                  </div>
+                                </div>
+                                }
                               </div>
                             </div>
                           </Col>
