@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import { imgURL } from "utils/constants";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tooltip, OverlayTrigger, } from "react-bootstrap";
 import Link from "next/link";
 import { addComma } from "utils/helperFunctions";
 
 class BasicInfo extends Component {
+
+  renderTooltip = (props, key) => {
+    return (
+      <Tooltip id="button-tooltip" {...props}>
+        <span style={{ fontSize: "10px" }}>{key}</span>
+      </Tooltip>
+    );
+  };
+
   render() {
     const { data, validatorsData, queueData } = this.props;
     return (
@@ -39,6 +48,25 @@ class BasicInfo extends Component {
               </Link>
               <p className="stats__title">finalised epoch</p>
             </div>
+            {data.finalizedEpoch && data.currentEpoch && parseInt(data.currentEpoch) - parseInt(data.finalizedEpoch) > 3 &&
+            <div>
+               <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={(props) =>
+                    this.renderTooltip(
+                      props,
+                      parseInt(data.currentEpoch) - parseInt(data.finalizedEpoch) + " behind current Epoch"
+                    )
+                  }
+                >
+              <span>
+              <i className="icon-warning"></i>
+              <span> {parseInt(data.currentEpoch) - parseInt(data.finalizedEpoch)}</span>
+              </span>
+              </OverlayTrigger>
+            </div>
+            }
           </div>
           <div className="stats__card">
             <div className="stats__icons">
