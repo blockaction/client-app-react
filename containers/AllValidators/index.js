@@ -34,7 +34,7 @@ class AllValidators extends Component {
       loader: false,
       showData: true,
       validatorsType: "all",
-      epochValue: ''
+      indexValue: ''
     };
     this.timeout = 0;
   }
@@ -189,7 +189,7 @@ class AllValidators extends Component {
       perPage,
       page,
       validatorsType,
-      epochValue
+      indexValue
     } = this.state;
     const loopData = mainData && mainData.count ? mainData : data;
     // var slicedData = loopData && loopData.validatorList && loopData.validatorList.length > 0 && loopData.validatorList.slice((page-1)*perPage, (page * perPage));
@@ -208,7 +208,7 @@ class AllValidators extends Component {
             <Row>
             <Col md={12}>
               <div className="search-bar">
-                <p>Search by Epoch</p>
+                <p>Search by Index</p>
                 <div className="search">
                   <div className="center-search ">
                     <div className="group-input">
@@ -217,14 +217,14 @@ class AllValidators extends Component {
                         size="md"
                         type="text"
                         placeholder="example: 2183"
-                        name="epochValue"
-                        value={epochValue || ""}
+                        name="indexValue"
+                        value={indexValue || ""}
                         onChange={this.handleInputChange}
                       />
-                      {epochValue !== "" ? (
+                      {indexValue !== "" ? (
                           <Link
-                            href={`/epoch/[key]`}
-                            as={`/epoch/${epochValue}`}
+                            href={`/validator/[key]`}
+                            as={`/validator/${indexValue}`}
                             title="Search Now"
                           >
                             <button className="btn btn-secondary search-index" type="submit">
