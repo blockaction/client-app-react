@@ -199,7 +199,9 @@ class Validator extends Component {
                                       variant={
                                         data.status === "ACTIVE"
                                           ? "success"
-                                          : "light"
+                                          : data.status === "PENDING" ?
+                                           "warning" :
+                                           "secondary"
                                       }
                                     >
                                       {" "}

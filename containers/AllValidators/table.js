@@ -34,7 +34,7 @@ renderTooltip = (props, key) => {
     return (
         <div className="hour-chart-tab">
              <div className={loader ? 'spinner-new overlay-loader-for-table' : ''}></div>
-                          <Table className="mt-3 mb-3">
+                          <Table responsive className="mt-3 mb-3">
                             <thead>
                               <tr>
                                 <th>Index</th>
@@ -105,9 +105,9 @@ renderTooltip = (props, key) => {
                                         <span
                                             className={
                                             item.validator && item.validator.status === "Active"
-                                                ? "text-green badge bg-success"
+                                                ? "text-green badge badge-success"
                                                 : item.validator.status !== "Active"
-                                                ? "badge bg-warning"
+                                                ? "badge badge-warning"
                                                 : ""
                                             }
                                         >
@@ -140,7 +140,7 @@ renderTooltip = (props, key) => {
                           {showData && loopData &&
                             loopData.validatorList &&
                             loopData.validatorList.length > 0 && (
-                              <Row className="d-flex justify-content-between mr-1 ml-1">
+                              <div className="d-flex justify-content-between mr-1 ml-1">
                                 <div className="select-wrap">
                                   <Form.Control
                                     size="sm"
@@ -169,7 +169,7 @@ renderTooltip = (props, key) => {
                                   previousLabel={"<<"}
                                   onPageChange={handlePageClick}
                                 />
-                              </Row>
+                              </div>
                             )}
         </div>
     );

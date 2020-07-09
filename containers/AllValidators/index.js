@@ -34,6 +34,7 @@ class AllValidators extends Component {
       loader: false,
       showData: true,
       validatorsType: "all",
+      epochValue: ''
     };
     this.timeout = 0;
   }
@@ -174,6 +175,11 @@ class AllValidators extends Component {
     }
   };
 
+
+  handleInputChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render() {
     const { data, activeValidators, exitValidators } = this.props;
     const {
@@ -183,6 +189,7 @@ class AllValidators extends Component {
       perPage,
       page,
       validatorsType,
+      epochValue
     } = this.state;
     const loopData = mainData && mainData.count ? mainData : data;
     // var slicedData = loopData && loopData.validatorList && loopData.validatorList.length > 0 && loopData.validatorList.slice((page-1)*perPage, (page * perPage));
@@ -196,6 +203,57 @@ class AllValidators extends Component {
         <Container>
           <section>
             <InnerPageBanner pageTitle="Validators" />
+
+
+            <Row>
+            <Col md={12}>
+              <div className="search-bar">
+                <p>Search by Epoch</p>
+                <div className="search">
+                  <div className="center-search ">
+                    <div className="group-input">
+                      <Form.Control
+                        className="scanner-form validator-epoch scanner-index"
+                        size="md"
+                        type="text"
+                        placeholder="example: 2183"
+                        name="epochValue"
+                        value={epochValue || ""}
+                        onChange={this.handleInputChange}
+                      />
+                      {epochValue !== "" ? (
+                          <Link
+                            href={`/epoch/[key]`}
+                            as={`/epoch/${epochValue}`}
+                            title="Search Now"
+                          >
+                            <button className="btn btn-secondary search-index" type="submit">
+                              <span>
+                                <i className="icon-search1"></i>
+                              </span>
+                            </button>
+                          </Link>
+                        ) : (
+                          <button
+                            disabled={true}
+                            className="btn btn-secondary search-index"
+                            type="submit"
+                            variant="secondary"
+                            title="Search Now"
+                          >
+                            <span>
+                              <i className="icon-search1"></i>
+                            </span>
+                          </button>
+                        )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+
+
             {/* <Row className="justify-content-md">
               <Col md="4">
                 <span>

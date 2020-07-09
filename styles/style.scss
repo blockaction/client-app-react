@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap');
 $main-color: #37d4b1;
 // $secondary-color: #2babab;
 $secondary-color: #00a17e;
@@ -1160,8 +1161,15 @@ section {
 }
 
 .pagination {
+  flex-wrap: wrap;
   li {
+    display: inline-block;
+    margin-bottom: 10px;
+    &.previous,&.next {
+      font-family: 'Corben', cursive;
+    }
     a {
+      display: inline-block;
       padding: 5px 15px;
       color: rgb(36, 4, 4);
       background: transparent;
@@ -1196,15 +1204,11 @@ section {
       }
     }
   }
-  .previous {
-    margin-right: 8px;
-  }
-  .next {
-    margin-left: 8px;
-  }
 }
 
 .select-wrap {
+   min-width: 60px;
+   margin-right: 10px;
   .form-control {
     padding: 5px;
     border: 1px solid #e7e7e7;
@@ -1537,13 +1541,11 @@ section {
 .badge {
   padding: 0.5em 0.5em;
   font-weight: 400;
-  color: rgb(17, 15, 15);
   &.bg-success {
     background: #49db9c !important;
   }
   &.bg-warning {
     background: #ffad4e !important;
-    color: #fff;
   }
 }
 
@@ -1701,3 +1703,24 @@ section {
   font-weight: 600;
   font-size: 18px;
 }
+
+.validator-epoch {
+  border: 1px solid #ebebeb !important;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+}
+
+.search-index {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding: 5px 20px;
+}
+
+.scanner-index {
+  &::placeholder {
+    font-style: italic;
+    color: #b8b1b1
+  }
+}
+
+
