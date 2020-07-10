@@ -136,6 +136,25 @@ class BasicInfo extends Component {
               </Link>
               <p className="stats__title">Finalised slot</p>
             </div>
+            {data.finalizedSlot && data.currentSlot && parseInt(data.currentSlot) - parseInt(data.finalizedSlot) > 96 &&
+            <div>
+               <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={(props) =>
+                    this.renderTooltip(
+                      props,
+                      parseInt(data.currentSlot) - parseInt(data.finalizedSlot) + " behind current Slot"
+                    )
+                  }
+                >
+              <span>
+              <i className="icon-warning"></i>
+              <span> {parseInt(data.currentSlot) - parseInt(data.finalizedSlot)}</span>
+              </span>
+              </OverlayTrigger>
+            </div>
+            }
           </div>
           <div className="stats__card">
             <div className="stats__icons">
