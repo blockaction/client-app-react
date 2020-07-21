@@ -15,7 +15,6 @@ import {
 import Link from "next/link";
 import { addComma } from "utils/helperFunctions";
 import ReactPaginate from "react-paginate";
-import { text_truncate } from "utils/helperFunctions";
 import moment from "moment";
 
 
@@ -38,7 +37,7 @@ renderTooltip = (props, key) => {
                             <thead>
                               <tr>
                                 <th>Epoch</th>
-                                <th style={{textAlign:'center'}}>Time</th>
+                                <th>Time</th>
                                 <th>Attestations</th>
                                 <th>Deposits</th>
                                 <th>Slashing P / A</th>
@@ -63,14 +62,12 @@ renderTooltip = (props, key) => {
                                                 }`}
                                                 >
                                                 <a style={{ textDecoration: "none" }}>
-                                                    {text_truncate(
-                                                    item.epoch ? item.epoch : "---",
-                                                    30
-                                                    )}
+                                                    {
+                                                    item.epoch ? item.epoch : "---"}
                                                 </a>
                                                 </Link>
                                             </td>
-                                            <td>{item.time ? item.time : '---'} </td>
+                                            <td>{item.time ? moment(item.time).fromNow() : '---'} </td>
                                             <td>{item.attestations ? item.attestations : '---'} </td>
                                             <td>{item.deposits ? item.deposits : '---'} </td>
                                             <td>{item["slashings_P/A"] &&  item["slashings_P/A"] ?
