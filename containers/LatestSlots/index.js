@@ -8,6 +8,7 @@ import { withRouter } from "next/router";
 import { text_truncate } from "utils/helperFunctions";
 import InnerPageBanner from "components/Common/InnerPageBanner/";
 import Link from "next/link";
+import moment from "moment";
 
 class LatestSlots extends Component {
 
@@ -126,6 +127,7 @@ class LatestSlots extends Component {
               <th>Epoch </th>
               <th>Slot</th>
               <th>Proposer</th>
+              <th>Time</th>
               <th>Status</th>
               <th>ATT</th>
             </tr>
@@ -168,6 +170,7 @@ class LatestSlots extends Component {
                           </a>
                         </Link>
                     </td>
+                    <td>{item.time ? moment(item.time).fromNow() : '---'} </td>
                     <td>
                       <span
                         className={item.status === 'proposed' ? 'text-green badge bg-success' :
