@@ -94,8 +94,8 @@ class LatestSlots extends Component {
 
   render() {
     const { data } = this.props;
-    const { mainData, page, perPage, count, filteredData, loader } = this.state;
-    const loopData = mainData && mainData.totalSize ? mainData : data;
+    const { mainData, page, perPage, loader } = this.state;
+    const loopData = mainData && mainData.total_size ? mainData : data;
     return (
       <Layout
         websiteTitle="Attestations Details - Eth | Cryptocurrency"
