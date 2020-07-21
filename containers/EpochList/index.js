@@ -52,7 +52,7 @@ class AllEpochs extends Component {
     this.setState({ page: page, loader: true }, () => {
       action
         .getData(
-          `epochs/?page=${page}&perPage=${this.state.perPage}`
+          `epochs?page=${page}&perPage=${this.state.perPage}`
         )
         .then((res) => {
           if (res && res.message === "Sucess") {
@@ -71,7 +71,7 @@ class AllEpochs extends Component {
       () => {
         action
           .getData(
-            `epochs/?page=${this.state.page}&perPage=${this.state.perPage}`
+            `epochs?page=${this.state.page}&perPage=${this.state.perPage}`
           )
           .then((res) => {
             if (res && res.message === "Sucess") {
@@ -95,7 +95,7 @@ class AllEpochs extends Component {
   handleSelect = (key) => {
     this.setState({ loader: true, showData: false });
     if (key === "1") {
-      action.getData("epochs/?page=1&perPage=10").then((res) => {
+      action.getData("epochs?page=1&perPage=10").then((res) => {
         this.setState({
           mainData: res,
           loader: false,

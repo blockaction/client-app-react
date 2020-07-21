@@ -31,7 +31,6 @@ renderTooltip = (props, key) => {
 
   render() {
     const { loopData, loader, showData, page, perPage, handleChange, handlePageClick, validatorsType } = this.props;
-   console.log(loopData,'<<<<<<<<<<<<')
     return (
         <div className="hour-chart-tab">
              <div className={loader ? 'spinner-new overlay-loader-for-table' : ''}></div>
