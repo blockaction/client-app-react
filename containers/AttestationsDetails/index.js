@@ -104,7 +104,7 @@ class AttestationsDetails extends Component {
         >
           <Container>
             <section>
-            <InnerPageBanner pageTitle="Attestations" />
+            <InnerPageBanner pageTitle="Latest Slots" />
             {/* <Row className="justify-content-md">
               <Col md="4">
                 <span>

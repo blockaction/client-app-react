@@ -6,6 +6,7 @@ routes.add("index", "/");
 routes.add("peers", "/peers");
 routes.add("attestations-details", "/attestations-details");
 routes.add("all-validators", "/all-validators");
+routes.add("epochs", "/epochs");
 // routes.add("validator", "/validator/:key");
 routes.add("pending-validators", "/pending-validators/:key");
 // routes.add("epoch", "/epoch/:key");

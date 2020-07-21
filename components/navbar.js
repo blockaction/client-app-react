@@ -101,6 +101,9 @@ class NavigationBar extends React.Component {
                 <Link href="/all-validators" passHref>
                   <Nav.Link>Validators</Nav.Link>
                 </Link>
+                <Link href="/epochs" passHref>
+                  <Nav.Link>Epochs</Nav.Link>
+                </Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
