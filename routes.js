@@ -4,7 +4,7 @@ const routes = (module.exports = nextRoutes());
 routes.add("index", "/");
 
 routes.add("peers", "/peers");
-routes.add("attestations-details", "/attestations-details");
+routes.add("latest-slots", "/latest-slots");
 routes.add("all-validators", "/all-validators");
 routes.add("epochs", "/epochs");
 // routes.add("validator", "/validator/:key");

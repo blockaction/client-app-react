@@ -9,13 +9,14 @@ import { text_truncate } from "utils/helperFunctions";
 import InnerPageBanner from "components/Common/InnerPageBanner/";
 import Link from "next/link";
 
-class AttestationsDetails extends Component {
+class LatestSlots extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       data: {},
       page: 1,
+      perPage: 10,
       count: 10,
       query: '',
       loader: false,
@@ -25,10 +26,10 @@ class AttestationsDetails extends Component {
 
   static async getInitialProps() {
     // const data = await action
-    // .getData('attestations?page=1&count=10')
+    // .getData('attestations?page=1&perPage=10')
     // .then(res => res);
     const data = await action
-    .getData('get_latest_block?page=1&count=10')
+    .getData('get_latest_block?page=1&perPage=10')
     .then(res => res);
 
   return {
@@ -49,7 +50,7 @@ class AttestationsDetails extends Component {
     const page = data.selected + 1
     this.setState({page: page, loader: true}, () => {
       action
-        .getData(`get_latest_block?page=${page}&count=${this.state.count}`)
+        .getData(`get_latest_block?page=${page}&perPage=${this.state.count}`)
         .then(res => {
           if(res && res.message === "Sucess") {
             this.setState({mainData:res, loader: false})
@@ -63,7 +64,7 @@ class AttestationsDetails extends Component {
   handleChange = event => {
       this.setState({count: parseInt(event.target.value), loader: true}, () => {
         action
-          .getData(`get_latest_block?page=${this.state.page}&count=${this.state.count}`)
+          .getData(`get_latest_block?page=${this.state.page}&perPage=${this.state.count}`)
           .then(res => {
             if(res && res.message === "Sucess") {
               this.setState({mainData:res, loader: false})
@@ -93,7 +94,7 @@ class AttestationsDetails extends Component {
 
   render() {
     const { data } = this.props;
-    const { mainData, page, count, filteredData, loader } = this.state;
+    const { mainData, page, perPage, count, filteredData, loader } = this.state;
     const loopData = mainData && mainData.totalSize ? mainData : data;
     return (
       <Layout
@@ -187,40 +188,39 @@ class AttestationsDetails extends Component {
             }
             </tbody>
             </Table>
-            {loopData && loopData.data && loopData.data.length > 10 &&
-               <Row>
-                 <Col>
-                 <div className="select-wrap">
-                 <Form.Control
-                    size="sm"
-                    as="select"
-                    name="count"
-                    // value={data.state || ''}
-                    onChange={this.handleChange}
-                  >
-                    {/* <option value="_" disabled="" selected="">
+            {loopData && loopData.data && loopData.data.length > 0 &&
+               (
+                <div className="d-flex justify-content-between mr-1 ml-1">
+                  <div className="select-wrap">
+                    <Form.Control
+                      size="sm"
+                      as="select"
+                      name="perPage"
+                      // value={data.state || ''}
+                      onChange={this.handleChange}
+                    >
+                      {/* <option value="_" disabled="" selected="">
                       Select One
                     </option> */}
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                  </Form.Control>
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </Form.Control>
                   </div>
-                 </Col>
-                 <Col style={{marginTop: '5px', marginLeft:'150px'}}>
-                  <ReactPaginate 
-                    containerClassName ="pagination"
+                  <ReactPaginate
+                    containerClassName="pagination"
                     pageClassName="page-item"
                     activeClassName="active"
-                    pageCount = {loopData.totalSize / (count ? count  : 10)}
+                    forcePage={page - 1}
+                    pageCount={(loopData && loopData.total_size  / (perPage ? perPage : 10))}
                     pageRangeDisplayed={5}
-                    nextLabel={'>>'}
-                    previousLabel={'<<'}
+                    nextLabel={">>"}
+                    previousLabel={"<<"}
                     onPageChange={this.handlePageClick}
                   />
-                 </Col>
-                 </Row>
+                </div>
+              )
               }
             </section>
     </Container>
@@ -229,4 +229,4 @@ class AttestationsDetails extends Component {
   }
 }
 
-export default withRouter(AttestationsDetails);
+export default withRouter(LatestSlots);

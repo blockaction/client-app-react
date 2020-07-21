@@ -27,7 +27,7 @@ class Attestation extends Component {
             Latest Slots
           </span>
           <span>
-            <Link href="attestations-details">
+            <Link href="latest-slots">
               <a
                 className="btn btn-secondary btn-xs
               "

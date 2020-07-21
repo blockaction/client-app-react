@@ -56,8 +56,8 @@ renderTooltip = (props, key) => {
                                     <tr key={index}>
                                            <td>
                                                 <Link
-                                                href={"/epochs/[key]"}
-                                                as={`/epochs/${
+                                                href={"/epoch/[key]"}
+                                                as={`/epoch/${
                                                     item.epoch && item.epoch
                                                 }`}
                                                 >
@@ -74,7 +74,17 @@ renderTooltip = (props, key) => {
                                                   item["slashings_P/A"].attester_slashing + '/' +
                                                   item["slashings_P/A"].proposer_slashing
                                                     : '---'} </td>
-                                            <td>{item.finalized ? 'True' : 'False'} </td>
+                                            <td>
+                                              <span
+                                                  className={
+                                                  item.finalized && item.finalized 
+                                                      ? "text-green badge badge-success"
+                                                      : "badge badge-secondary"
+                                                  }
+                                              >
+                                                 {item.finalized ? 'True' : 'False'}
+                                              </span>
+                                              </td>
                                             <td>{item.eligible ? item.eligible : '---'} </td>
                                             <td>{item.voted ? item.voted : '---'} </td>
                                     </tr>
