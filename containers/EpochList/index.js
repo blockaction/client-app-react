@@ -65,7 +65,6 @@ class AllEpochs extends Component {
   };
 
   handleChange = (event) => {
-    const { validatorsType } = this.state;
     this.setState(
       { perPage: parseInt(event.target.value), loader: true, page: 1 },
       () => {

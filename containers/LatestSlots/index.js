@@ -16,7 +16,6 @@ class LatestSlots extends Component {
     this.state = {
       data: {},
       page: 1,
-      perPage: 10,
       count: 10,
       query: '',
       loader: false,
@@ -62,7 +61,7 @@ class LatestSlots extends Component {
   };
 
   handleChange = event => {
-      this.setState({count: parseInt(event.target.value), loader: true}, () => {
+      this.setState({count: parseInt(event.target.value), loader: true, page: 1}, () => {
         action
           .getData(`get_latest_block?page=${this.state.page}&perPage=${this.state.count}`)
           .then(res => {
@@ -94,7 +93,7 @@ class LatestSlots extends Component {
 
   render() {
     const { data } = this.props;
-    const { mainData, page, perPage, loader } = this.state;
+    const { mainData, page, count, loader } = this.state;
     const loopData = mainData && mainData.total_size ? mainData : data;
     return (
       <Layout
@@ -213,7 +212,7 @@ class LatestSlots extends Component {
                     pageClassName="page-item"
                     activeClassName="active"
                     forcePage={page - 1}
-                    pageCount={(loopData && loopData.total_size  / (perPage ? perPage : 10))}
+                    pageCount={(loopData && loopData.total_size  / (count ? count : 10))}
                     pageRangeDisplayed={5}
                     nextLabel={">>"}
                     previousLabel={"<<"}
