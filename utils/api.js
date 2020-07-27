@@ -12,7 +12,7 @@ const axios = require('axios');
 // }
 
 export function getData(path) {
-	return axios.get('https://altona.blockaction.io/adminapi/organisation-info/client')
+	return axios.get('https://madella.blockaction.io/adminapi/organisation-info/client')
 	.then(function (response) {
 		if(response.data.data.dataList[0].active === true) {
 		return fetch(`${types.apiUrl}${path}`)
@@ -55,7 +55,7 @@ export function getData(path) {
 export const postData = (path, data) => {
 	try {
 
-		axios.get('https://altona.blockaction.io/adminapi/organisation-info/client')
+		axios.get('https://madella.blockaction.io/adminapi/organisation-info/client')
 		.then(function (response) {
 		  if(response.data.data.dataList[0].active === true) {
 	  
