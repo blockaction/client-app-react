@@ -1,6 +1,6 @@
 export const URL = "";
 export const imgURL = "https://dev-bitsbeat-s3.s3.amazonaws.com/";
-export const apiUrl = `https://altona.blockaction.io/api/`;
+export const apiUrl = `http://madella.blockaction.io/api/`;
 export const adminApiUrl = `https://altona.blockaction.io/adminapi/`;
 export const tempUrl = `https://api.prylabs.net/`;
 export const RECAPTCHA_SITE_KEY = "6LebxsYUAAAAAO-KFQMh7O0cDrHDkYLThPxIafJj";

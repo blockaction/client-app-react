@@ -28,7 +28,7 @@ class Footer extends React.Component {
     responseMessage: null,
     responseStatus: null,
     loading: false,
-    domain: "Witti",
+    domain: "Medalla",
     anotherDomain: "Altona",
   };
 
@@ -43,10 +43,10 @@ class Footer extends React.Component {
       pauseOnHover: true,
       draggable: false,
     });
-    if (window.location.href.includes("witti")) {
-      this.setState({ domain: "Witti", anotherDomain: "Altona" });
+    if (window.location.href.includes("medalla")) {
+      this.setState({ domain: "Medalla", anotherDomain: "Altona" });
     } else if (window.location.href.includes("altona")) {
-      this.setState({ domain: "Altona", anotherDomain: "Witti" });
+      this.setState({ domain: "Altona", anotherDomain: "Medalla" });
     }
   }
 
@@ -112,7 +112,7 @@ class Footer extends React.Component {
               <img src={logoImage}></img>
               <p className="main-footer-text">
                 ETH 2.0 Beacon Chain {domain}{" "}
-                {domain && domain === "Witti" && "Multiclient"} Testnet Explorer{" "}
+                {domain && domain === "Medalla" && "Multiclient"} Testnet Explorer{" "}
               </p>
 
               <div>

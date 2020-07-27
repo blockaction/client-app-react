@@ -22,16 +22,16 @@ class NavigationBar extends React.Component {
     super(props);
     this.state = {
       navbarToggle: false,
-      domain: "Witti",
+      domain: "Medalla",
       anotherDomain: "Prysm",
     };
   }
 
   componentDidMount() {
-    if (window.location.href.includes("witti")) {
-      this.setState({ domain: "Witti", anotherDomain: "Prysm" });
+    if (window.location.href.includes("medalla")) {
+      this.setState({ domain: "Medalla", anotherDomain: "Prysm" });
     } else if (window.location.href.includes("prysm")) {
-      this.setState({ domain: "Prysm", anotherDomain: "Witti" });
+      this.setState({ domain: "Prysm", anotherDomain: "Medalla" });
     }
   }
 
