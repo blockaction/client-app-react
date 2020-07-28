@@ -10,16 +10,16 @@ class Scanner extends Component {
       query: "",
       searchBy: "validator",
       selectedValue: "1",
-      domain: "Witti",
+      domain: "Medalla",
       anotherDomain: "Altona",
     };
   }
 
   componentDidMount() {
-    if (window.location.href.includes("witti")) {
-      this.setState({ domain: "Witti", anotherDomain: "Altona" });
+    if (window.location.href.includes("medalla")) {
+      this.setState({ domain: "Medalla", anotherDomain: "Altona" });
     } else if (window.location.href.includes("altona")) {
-      this.setState({ domain: "Altona", anotherDomain: "Witti" });
+      this.setState({ domain: "Altona", anotherDomain: "Medalla" });
     }
   }
 
@@ -59,7 +59,7 @@ class Scanner extends Component {
                   <p>
                     {" "}
                     Connected to {domain}{" "}
-                    {domain && domain === "Witti" && "Multiclient"} Testnet{" "}
+                    {domain && domain === "Medalla" && "Multiclient"} Testnet{" "}
                   </p>
                 </div>
               </div>
