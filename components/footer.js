@@ -188,7 +188,7 @@ class Footer extends React.Component {
             </div>
             <div className="col-md-8 text-right">
               <small>
-                BlockAction | Developed by{" "}
+                A project by Avarch | Developed by{" "}
                 <a
                   href="https://www.bitsbeat.com/"
                   target="_blank"
