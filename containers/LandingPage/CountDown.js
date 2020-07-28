@@ -76,7 +76,7 @@ class Countdown extends Component {
     return (
       <div className="Countdown mb-3">
         <div>
-            Medalla Genesis Event is coming soon (24th of August):
+            Medalla Genesis Event is coming soon (4th of August):
         </div>  
         <span>
           <span>
