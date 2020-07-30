@@ -76,11 +76,47 @@ renderTooltip = (props, key) => {
                                                      "---"
                                                }
                                             </td>
-                                            <td>{item.slashed_by ? item.slashed_by : '---'} </td>
+                                            <td>
+                                                <Link
+                                                href={"/validator/[key]"}
+                                                as={`/validator/${
+                                                    item.slashed_by && item.slashed_by
+                                                }`}
+                                                >
+                                                <a style={{ textDecoration: "none" }}>
+                                                    {
+                                                    item.slashed_by ? item.slashed_by : "---"}
+                                                </a>
+                                                </Link>
+                                            </td>
                                             <td>{item.age ? moment(item.age).fromNow() : '---'} </td>
                                             <td>{item.reason ? item.reason : '---'} </td>
-                                            <td>{item.block ? item.block : '---'} </td>
-                                            <td>{item.epoch ? item.epoch : '---'} </td>
+                                            <td>
+                                                <Link
+                                                href={"/slot/[key]"}
+                                                as={`/slot/${
+                                                    item.block && item.block
+                                                }`}
+                                                >
+                                                <a style={{ textDecoration: "none" }}>
+                                                    {
+                                                    item.block ? item.block : "---"}
+                                                </a>
+                                                </Link>
+                                            </td>
+                                            <td>
+                                                <Link
+                                                href={"/epoch/[key]"}
+                                                as={`/epoch/${
+                                                    item.epoch && item.epoch
+                                                }`}
+                                                >
+                                                <a style={{ textDecoration: "none" }}>
+                                                    {
+                                                    item.epoch ? item.epoch : "---"}
+                                                </a>
+                                                </Link>
+                                            </td>
                                     </tr>
                                   );
                                 })
