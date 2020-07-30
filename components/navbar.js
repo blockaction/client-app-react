@@ -78,7 +78,7 @@ class NavigationBar extends React.Component {
                   >
                     {anotherDomain}
                   </a>
-                </NavDropdown> */}
+                </NavDropdown> 
             {/* <span className="nav__text">Beacon Ethereum</span> */}
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse
@@ -98,9 +98,23 @@ class NavigationBar extends React.Component {
                 <Link href="/resources" passHref>
                   <Nav.Link>Resources</Nav.Link>
                 </Link>
-                <Link href="/all-validators" passHref>
+                <li className="nav-item">
+                  <NavDropdown title="Validators" id="basic-nav-dropdown">
+                    <Link href="/all-validators">
+                      <NavDropdown.Item href="#action/3.1">
+                        Overview
+                      </NavDropdown.Item>
+                    </Link>
+                    <Link href="/slashings">
+                      <NavDropdown.Item href="#action/3.2">
+                        Slashings
+                      </NavDropdown.Item>
+                    </Link>
+                  </NavDropdown>
+                </li>
+                {/* <Link href="/all-validators" passHref>
                   <Nav.Link>Validators</Nav.Link>
-                </Link>
+                </Link> */}
                 <Link href="/epochs" passHref>
                   <Nav.Link>Epochs</Nav.Link>
                 </Link>

@@ -7,6 +7,7 @@ routes.add("peers", "/peers");
 routes.add("latest-slots", "/latest-slots");
 routes.add("all-validators", "/all-validators");
 routes.add("epochs", "/epochs");
+routes.add("slashings", "/slashings");
 // routes.add("validator", "/validator/:key");
 routes.add("pending-validators", "/pending-validators/:key");
 // routes.add("epoch", "/epoch/:key");
