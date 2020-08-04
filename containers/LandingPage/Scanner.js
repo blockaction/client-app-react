@@ -56,7 +56,8 @@ class Scanner extends Component {
             <Col lg={8} md={8} className="offset-lg-2">
               <div className="banner__content">
                 <div className="banner__text">
-                  <CountDown date={`2020-08-04T18:45:00`} />
+                  {/* <CountDown date={`2020-08-04T18:45:00`} /> */}
+                  {/* <CountDown date={Date.UTC(2020, 08, 04)} /> */}
                   <h1 className="banner__title">Blockchain Explorer</h1>
                   <p>
                     {" "}
