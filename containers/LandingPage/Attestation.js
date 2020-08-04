@@ -110,7 +110,7 @@ class Attestation extends Component {
               })
             ) : (
               <tr>
-                <td>No attestation data</td>
+                <td>No data available in table</td>
               </tr>
             )}
           </tbody>
