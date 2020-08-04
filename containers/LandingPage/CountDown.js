@@ -76,7 +76,7 @@ class Countdown extends Component {
     return (
       <div className="Countdown mb-3">
         {(countDown.days || countDown.hours || countDown.min || countDown.sec > 1) ?
-        <>
+        <div>
         <div>
             Medalla Genesis Event is coming soon (4th of August):
         </div>  
@@ -108,7 +108,7 @@ class Countdown extends Component {
              <span>Sec</span>
           </span>
         </span>
-        </> :
+        </div> :
          null
         }
       </div>
