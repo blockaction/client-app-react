@@ -391,7 +391,7 @@ class LandingPage extends Component {
 
               <Row>
                 <Col lg={12}>
-                  <Tab.Container id="" defaultActiveKey={1}>
+                  <Tab.Container id="" defaultActiveKey={2}>
                     <Nav variant="tabs" className="pt-3">
                     <Nav.Item>
                         <Nav.Link eventKey={"1"}>
