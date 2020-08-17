@@ -67,9 +67,9 @@ class FAQ extends Component {
               </div>
             </Row>
             {ethResourcesWithCat && ethResourcesWithCat.length > 0 && 
-              ethResourcesWithCat.map((item, index) => {
+              ethResourcesWithCat.map((item, idx) => {
                 return(
-                   <>
+                   <div key={idx}>
                      <p className="faq-subtitle">{item.category_title}</p>
                         <Accordion>
                   {item.faq &&
@@ -77,7 +77,7 @@ class FAQ extends Component {
                       item.faq.map((item, index) => {
                         return(
                           <Card onClick={() => this.handleClick(index)} key={index}>
-                          <Accordion.Toggle as={Card.Header} eventKey={index}>
+                          <Accordion.Toggle as={Card.Header} eventKey={index+1}>
                             {item.question}
                             <i
                               className={
@@ -87,7 +87,7 @@ class FAQ extends Component {
                               }
                             ></i>
                           </Accordion.Toggle>
-                          <Accordion.Collapse eventKey={index}>
+                          <Accordion.Collapse eventKey={index+1}>
                             <Card.Body>
                             {/* {item.answer} */}
                             <div dangerouslySetInnerHTML={{__html: `${item.answer}`}} />
@@ -97,7 +97,7 @@ class FAQ extends Component {
                         );
                       })}
                 </Accordion>
-                   </>
+                   </div>
                 );
               })
             }
