@@ -78,7 +78,7 @@ class Countdown extends Component {
         {(countDown.days || countDown.hours || countDown.min || countDown.sec > 1) ?
         <div>
         <div>
-            Medalla Genesis Event is coming soon (4th of August):
+            Genesis Event is coming soon (4th of August):
         </div>  
         <span>
           <span>

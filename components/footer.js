@@ -111,8 +111,10 @@ class Footer extends React.Component {
             <div className="col-md-12 text-center">
               <img src={logoImage}></img>
               <p className="main-footer-text">
-                ETH 2.0 Beacon Chain {domain}{" "}
-                {domain && domain === "Medalla" && "Multiclient"} Testnet Explorer{" "}
+                {/* ETH 2.0 Beacon Chain {domain}{" "} */}
+                {/* {domain && domain === "Medalla" && "Multiclient"} Testnet Explorer{" "} */}
+                ETH 2.0 Beacon Chain 
+                Pyrmont Testnet Explorer{" "}
               </p>
 
               <div>

@@ -61,8 +61,10 @@ class Scanner extends Component {
                   <h1 className="banner__title">Blockchain Explorer</h1>
                   <p>
                     {" "}
-                    Connected to {domain}{" "}
-                    {domain && domain === "Medalla" && "Multiclient"} Testnet{" "}
+                    {/* Connected to {domain}{" "}
+                    {domain && domain === "Medalla" && "Multiclient"} Testnet{" "} */}
+                    Connected to Pyrmont{" "}
+                    Multiclient Testnet{" "}
                   </p>
                 </div>
               </div>
