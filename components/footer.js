@@ -114,7 +114,7 @@ class Footer extends React.Component {
                 {/* ETH 2.0 Beacon Chain {domain}{" "} */}
                 {/* {domain && domain === "Medalla" && "Multiclient"} Testnet Explorer{" "} */}
                 ETH 2.0 Beacon Chain 
-                Pyrmont Testnet Explorer{" "}
+                Mainnet Testnet Explorer{" "}
               </p>
 
               <div>
