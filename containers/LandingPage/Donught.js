@@ -45,7 +45,7 @@ class Chart extends Component {
       <div className="pie-chart mb-3">
         <div className="pie-label ">
           <div>
-            <p className="value">2020</p>
+            <p className="value">2021</p>
             <p className="label-text">No. of data</p>
           </div>
         </div>

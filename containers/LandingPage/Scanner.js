@@ -63,7 +63,7 @@ class Scanner extends Component {
                     {" "}
                     {/* Connected to {domain}{" "}
                     {domain && domain === "Medalla" && "Multiclient"} Testnet{" "} */}
-                    Connected to the  Eth2 Mainnet 
+                    Connected to the Eth 2.0 Mainnet 
                     {/* Connected to Pyrmont{" "}
                     Multiclient Testnet{" "} */}
                   </p>

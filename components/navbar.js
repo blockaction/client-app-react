@@ -95,9 +95,9 @@ class NavigationBar extends React.Component {
                 <Link href="/reward" passHref>
                   <Nav.Link>Reward Calculator</Nav.Link>
                 </Link>
-                <Link href="/resources" passHref>
+                {/* <Link href="/resources" passHref>
                   <Nav.Link>Resources</Nav.Link>
-                </Link>
+                </Link> */}
                 <Link href="/all-validators" passHref>
                   <Nav.Link>Validators</Nav.Link>
                 </Link>

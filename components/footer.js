@@ -185,7 +185,7 @@ class Footer extends React.Component {
           <div className="row pb-3">
             <div className="col-md-4">
               <small>
-                BlockAction | All rights reserved | &copy; Copyright 2020
+                BlockAction | All rights reserved | &copy; Copyright 2021
               </small>
             </div>
             <div className="col-md-8 text-right">
