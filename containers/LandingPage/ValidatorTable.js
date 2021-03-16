@@ -71,7 +71,7 @@ class ValidatorTable extends Component {
                           item.validator.index
                         }`}
                       >
-                        <a style={{ textDecoration: "none" }}>
+                        <a target="__blank" style={{ textDecoration: "none" }}>
                           {text_truncate(
                             item.validator && item.validator.index
                               ? item.validator.index

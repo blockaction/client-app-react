@@ -83,7 +83,7 @@ class Attestation extends Component {
                         href={"/validator/[key]"}
                         as={`/validator/${item && item.proposer}`}
                       >
-                        <a style={{ textDecoration: "none" }}>
+                        <a target="__blank" style={{ textDecoration: "none" }}>
                           {item ? item.proposer : "---"}
                         </a>
                       </Link>
